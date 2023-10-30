@@ -6,7 +6,7 @@ The `LoadingContainerWidget` is a customizable, animated loading widget for Flut
 
 <a href="https://www.buymeacoffee.com/altaysakarya" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
-<img src="https://github.com/altaysakarya/loading_container/blob/main/example.gif?raw=true" width="384" height="788" alt="Example GIF">
+<img src="https://github.com/altaysakarya/loading_container/blob/main/example.gif?raw=true" width="167" height="388" alt="Example GIF">
 
 ## Installation
 
