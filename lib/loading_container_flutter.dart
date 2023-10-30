@@ -1,3 +1,3 @@
-library loading_container;
+library loading_container_flutter;
 
 export 'src/loading_container_widget.dart';
