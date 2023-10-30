@@ -2,6 +2,7 @@ name: loading_container_flutter
 description: Easy container loading widget.
 version: 0.0.1
 homepage: https://altaysakarya.dev/
+repository: https://github.com/altaysakarya/loading_container_flutter
 
 environment:
   sdk: '>=3.1.3 <4.0.0'
