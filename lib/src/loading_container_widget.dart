@@ -8,6 +8,7 @@ class LoadingContainerWidget extends StatefulWidget {
   final BorderRadius? borderRadius;
   final BoxDecoration? boxDecoration;
   final Duration? duration;
+
   const LoadingContainerWidget({
     super.key,
     this.width = double.infinity,
@@ -24,6 +25,7 @@ class LoadingContainerWidget extends StatefulWidget {
 }
 
 class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with SingleTickerProviderStateMixin {
+  final kRadius = 8.0;
   late Color colorOne;
   late Color colorTwo;
   late AnimationController _animationController;
@@ -71,61 +73,60 @@ class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with Si
 
   @override
   Widget build(BuildContext context) {
-    double kRadius = 8.0;
-    return SizedBox(
-      width: widget.width,
-      height: widget.height,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: Container(
-              width: widget.width,
-              height: widget.height,
-              decoration: widget.boxDecoration != null
-                  ? widget.boxDecoration?.copyWith(
-                      color: widget.boxDecoration?.color != null ? null : colorOne,
-                      borderRadius: widget.boxDecoration?.borderRadius != null ||
-                              (widget.boxDecoration?.shape ?? BoxShape.rectangle) == BoxShape.circle
-                          ? null
-                          : (widget.borderRadius ?? BorderRadius.circular(kRadius)),
-                    )
-                  : BoxDecoration(color: colorOne, borderRadius: widget.borderRadius ?? BorderRadius.circular(kRadius)),
-            ),
-          ),
-          Align(
-            alignment: start ? Alignment.centerLeft : Alignment.centerRight,
-            child: AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) {
-                return ClipRect(
-                  child: Align(
-                    alignment: start ? Alignment.centerLeft : Alignment.centerRight,
-                    widthFactor: _animation.value,
-                    child: child,
-                  ),
-                );
-              },
+    return RepaintBoundary(
+      child: SizedBox(
+        width: widget.width,
+        height: widget.height,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Align(
+              alignment: Alignment.center,
               child: Container(
                 width: widget.width,
                 height: widget.height,
                 decoration: widget.boxDecoration != null
                     ? widget.boxDecoration?.copyWith(
-                        color: widget.boxDecoration?.color != null ? null : colorTwo,
-                        borderRadius: widget.boxDecoration?.borderRadius != null ||
-                                (widget.boxDecoration?.shape ?? BoxShape.rectangle) == BoxShape.circle
+                        color: widget.boxDecoration?.color != null ? null : colorOne,
+                        borderRadius: widget.boxDecoration?.borderRadius != null || (widget.boxDecoration?.shape ?? BoxShape.rectangle) == BoxShape.circle
                             ? null
                             : (widget.borderRadius ?? BorderRadius.circular(kRadius)),
                       )
-                    : BoxDecoration(
-                        color: colorTwo,
-                        borderRadius: widget.borderRadius ?? BorderRadius.circular(kRadius),
-                      ),
+                    : BoxDecoration(color: colorOne, borderRadius: widget.borderRadius ?? BorderRadius.circular(kRadius)),
               ),
             ),
-          ),
-        ],
+            Align(
+              alignment: start ? Alignment.centerLeft : Alignment.centerRight,
+              child: AnimatedBuilder(
+                animation: _animation,
+                builder: (context, child) {
+                  return ClipRect(
+                    child: Align(
+                      alignment: start ? Alignment.centerLeft : Alignment.centerRight,
+                      widthFactor: _animation.value,
+                      child: child,
+                    ),
+                  );
+                },
+                child: Container(
+                  width: widget.width,
+                  height: widget.height,
+                  decoration: widget.boxDecoration != null
+                      ? widget.boxDecoration?.copyWith(
+                          color: widget.boxDecoration?.color != null ? null : colorTwo,
+                          borderRadius: widget.boxDecoration?.borderRadius != null || (widget.boxDecoration?.shape ?? BoxShape.rectangle) == BoxShape.circle
+                              ? null
+                              : (widget.borderRadius ?? BorderRadius.circular(kRadius)),
+                        )
+                      : BoxDecoration(
+                          color: colorTwo,
+                          borderRadius: widget.borderRadius ?? BorderRadius.circular(kRadius),
+                        ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
