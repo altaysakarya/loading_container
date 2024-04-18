@@ -25,6 +25,7 @@ class LoadingContainerWidget extends StatefulWidget {
 }
 
 class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with SingleTickerProviderStateMixin {
+  final kRadius = 8.0;
   late Color colorOne;
   late Color colorTwo;
   late AnimationController _animationController;
@@ -72,7 +73,6 @@ class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with Si
 
   @override
   Widget build(BuildContext context) {
-    double kRadius = 8.0;
     return SizedBox(
       width: widget.width,
       height: widget.height,
