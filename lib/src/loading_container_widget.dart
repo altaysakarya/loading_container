@@ -8,6 +8,7 @@ class LoadingContainerWidget extends StatefulWidget {
   final BorderRadius? borderRadius;
   final BoxDecoration? boxDecoration;
   final Duration? duration;
+
   const LoadingContainerWidget({
     super.key,
     this.width = double.infinity,
@@ -86,8 +87,7 @@ class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with Si
               decoration: widget.boxDecoration != null
                   ? widget.boxDecoration?.copyWith(
                       color: widget.boxDecoration?.color != null ? null : colorOne,
-                      borderRadius: widget.boxDecoration?.borderRadius != null ||
-                              (widget.boxDecoration?.shape ?? BoxShape.rectangle) == BoxShape.circle
+                      borderRadius: widget.boxDecoration?.borderRadius != null || (widget.boxDecoration?.shape ?? BoxShape.rectangle) == BoxShape.circle
                           ? null
                           : (widget.borderRadius ?? BorderRadius.circular(kRadius)),
                     )
@@ -113,8 +113,7 @@ class _LoadingContainerWidgetState extends State<LoadingContainerWidget> with Si
                 decoration: widget.boxDecoration != null
                     ? widget.boxDecoration?.copyWith(
                         color: widget.boxDecoration?.color != null ? null : colorTwo,
-                        borderRadius: widget.boxDecoration?.borderRadius != null ||
-                                (widget.boxDecoration?.shape ?? BoxShape.rectangle) == BoxShape.circle
+                        borderRadius: widget.boxDecoration?.borderRadius != null || (widget.boxDecoration?.shape ?? BoxShape.rectangle) == BoxShape.circle
                             ? null
                             : (widget.borderRadius ?? BorderRadius.circular(kRadius)),
                       )
